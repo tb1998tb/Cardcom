@@ -1,0 +1,37 @@
+<div class="container-fluid">
+<app-spinner></app-spinner>
+    <div class="body-content">
+      <h3>אנשים</h3>
+      <div class="table-responsive">
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>תעודת זהות</th>
+            <th>שם</th>
+            <th>מייל</th>
+            <th>תאריך לידה</th>
+            <th>מין</th>
+            <th>טלפון</th>
+            <th>פעולות</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of api.persons">
+            <td>{{person.tz}}</td>
+            <td>{{person.name}}</td>
+            <td>{{person.mail}}</td>
+            <td>{{person.birthDate| date:"dd/MM/yy" }}</td>
+            <td>{{person.gender|gender}}</td>
+            <td>{{person.telephone }}</td>
+            <td>
+              
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+      </div>
+  </div>
+</div>

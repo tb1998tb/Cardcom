@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.28010.2048
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cardcom", "Cardcom\Cardcom.csproj", "{7688A96A-E03B-4191-956B-FC0D49771A65}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{635671E6-CD0C-46AF-B7D1-6AB7DB960A97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{4A69BDAB-2C65-4C6B-BC59-48548CE9208F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{7688A96A-E03B-4191-956B-FC0D49771A65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7688A96A-E03B-4191-956B-FC0D49771A65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7688A96A-E03B-4191-956B-FC0D49771A65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{635671E6-CD0C-46AF-B7D1-6AB7DB960A97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{635671E6-CD0C-46AF-B7D1-6AB7DB960A97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{635671E6-CD0C-46AF-B7D1-6AB7DB960A97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{635671E6-CD0C-46AF-B7D1-6AB7DB960A97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A69BDAB-2C65-4C6B-BC59-48548CE9208F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A69BDAB-2C65-4C6B-BC59-48548CE9208F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A69BDAB-2C65-4C6B-BC59-48548CE9208F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A69BDAB-2C65-4C6B-BC59-48548CE9208F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
