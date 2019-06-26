@@ -1,0 +1,44 @@
+<div class="body-content">
+  <div class="row">
+    <div class="col-sm-6 float-right">
+      <h3>אנשים</h3>
+    </div>
+    <div class="col-sm-6">
+      <a [routerLink]="'/person-details/0'" class="btn btn-top btn-outline-info">הוסף</a>
+    </div>
+  </div>
+  <div class="table-responsive">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>תעודת זהות</th>
+          <th>שם</th>
+          <th>מייל</th>
+          <th>תאריך לידה</th>
+          <th>מין</th>
+          <th>טלפון</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of api.persons">
+          <td>
+            <div class="actions-wrapper">
+                <a [routerLink]="'/person-details/'+person.id" class="btn btn-sm btn-outline-secondary">עריכה</a>
+                <a class="btn btn-sm btn-outline-danger">מחיקה</a>
+            </div>
+          </td>
+          <td>{{person.tz}}</td>
+          <td>{{person.name}}</td>
+          <td>{{person.mail}}</td>
+          <td>{{person.birthdate| date:"dd/MM/yy" }}</td>
+          <td>{{person.gender|gender}}</td>
+          <td>{{person.telephone }}</td>
+
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -1,7 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+//bootstrap
+
+.row{
+  direction:rtl;
+}
+
+.btn.btn-top {
+  margin-top: 20px;
+}
 
 //app-spinner
+
 .spinner-wrapper {
   width: 100vw;
   height: 100vh;
@@ -49,6 +59,12 @@
     height: 58px;
     opacity: 0;
   }
+}
+
+//ngx-datepicker
+
+.ngx-datepicker-container {
+  z-index: 1000 !important;
 }
 
 //

@@ -15,7 +15,7 @@ namespace DAL.Models
 		public string Name { get; set; }
 		public string Mail { get; set; }
 		[Required]
-		public DateTime BirthDate { get; set; }
+		public DateTime Birthdate { get; set; }
 		public Gender? Gender { get; set; }
 		[Numbers]
 		public string Telephone { get; set; }

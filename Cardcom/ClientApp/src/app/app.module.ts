@@ -6,17 +6,25 @@ import { GenderPipe } from './pipes/gender.pipe';
 import { ApiService } from './services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { HomeComponent } from './components/home/home.component';
+import { PersonDetailsComponent } from './components/person-details/person-details.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NgDatepickerModule } from 'ng2-datepicker';
 
 @NgModule({
   declarations: [
     AppComponent,
     GenderPipe,
-    SpinnerComponent
+    SpinnerComponent,
+    HomeComponent,
+    PersonDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    NgDatepickerModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],

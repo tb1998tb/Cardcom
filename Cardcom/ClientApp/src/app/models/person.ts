@@ -3,7 +3,7 @@ export class Person {
   tz: string;
   name: string;
   mail?: string;
-  birthDate?: Date;
+  birthdate?: Date;
   gender: number;
   telephone: string;
 }

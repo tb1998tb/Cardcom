@@ -1,0 +1,41 @@
+<form *ngIf="person">
+  <div class="form-group row">
+    <label class="col-sm-3">תעודת זהות</label>
+    <div class="col-sm-9">
+      <input type="text" name="tz" class="form-control" [(ngModel)]="person.tz">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3">שם</label>
+    <div class="col-sm-9">
+
+      <input type="text" name="name" class="form-control" [(ngModel)]="person.name">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3">מייל</label>
+    <div class="col-sm-9">
+      <input type="email" id="exampleFormControlInput1" name="mail" class="form-control" [(ngModel)]="person.mail">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3">תאריך לידה</label>
+    <div class="col-sm-9">
+      <ng-datepicker name="birthdate" [options]="options" [(ngModel)]="birthdate"></ng-datepicker>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3">מין</label>
+    <div class="col-sm-9">
+      <select name="gender" class="form-control" [(ngModel)]="person.gender">
+        <option *ngFor="let gender of api.genders" [ngValue]="gender.id" [selected]="person.gender==gender.id">{{gender.id|gender}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-3">טלפון</label>
+    <div class="col-sm-9">
+      <input type="tel" name="telephone" class="form-control" [(ngModel)]="person.telephone">
+    </div>
+  </div>
+</form>
