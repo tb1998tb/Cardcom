@@ -5,4 +5,4 @@ https://nodejs.org/en/
 
 ההרצה הראשונה של התוכנית תיקח זמן משום שמתבצעת בה התקנת המודולים שמוגדרים ב-package
 
-שימו לב לשנות את ה-connectionString ב- appSetting
+שימו לב לשנות את ה-connectionString ב- appSetting. לאחר מכן ניתן ליצור את הdatabase באמצעות code first
