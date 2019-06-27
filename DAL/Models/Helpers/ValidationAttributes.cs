@@ -8,6 +8,11 @@ namespace DAL.Models
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
 	public class NumbersAttribute : ValidationAttribute
 	{
+		/// <summary>
+		/// validates that text has only numbers
+		/// </summary>
+		/// <param name="value">text value</param>
+		/// <returns>is validate</returns>
 		public override bool IsValid(object value)
 		{
 			if (value == null)
@@ -24,6 +29,11 @@ namespace DAL.Models
 	[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
 	public class EmailAttribute : ValidationAttribute
 	{
+		/// <summary>
+		/// validates email pattern
+		/// </summary>
+		/// <param name="value">email value</param>
+		/// <returns>is validate</returns>
 		public override bool IsValid(object value)
 		{
 			if (value == null)

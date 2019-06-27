@@ -15,6 +15,10 @@ namespace DAL
 
 		public DbSet<Person> Persons { get; set; }
 
+		/// <summary>
+		/// save changes in db
+		/// </summary>
+		/// <returns>save action status</returns>
 		public ActionStatus Save() {
 			try
 			{

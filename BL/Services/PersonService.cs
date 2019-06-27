@@ -18,11 +18,20 @@ namespace BL
 	public class PersonService : IPersonService
 	{
 		private CardcomContext DB;
+
+		/// <summary>
+		/// consructor
+		/// </summary>
+		/// <param name="db">database context</param>
 		public PersonService(CardcomContext db)
 		{
 			this.DB = db;
 		}
 
+		/// <summary>
+		/// get all persons
+		/// </summary>
+		/// <returns>persons list</returns>
 		public WebResult<List<Person>> GetAll()
 		{
 			return new WebResult<List<Person>>
@@ -31,6 +40,11 @@ namespace BL
 				Value = DB.Persons.ToList()
 			};
 		}
+
+		/// <summary>
+		/// get all genders
+		/// </summary>
+		/// <returns>gender list</returns>
 		public WebResult<List<IdName>> GetGenders()
 		{
 			Array arr = Enum.GetValues(typeof(Gender));
@@ -50,6 +64,11 @@ namespace BL
 			};
 		}
 
+		/// <summary>
+		/// add or edit person
+		/// </summary>
+		/// <param name="person">//person data</param>
+		/// <returns>status of action</returns>
 		public ActionStatus SetPerson(Person person)
 		{
 			var originP = DB.Persons.Find(person.Id);
@@ -71,6 +90,11 @@ namespace BL
 			
 		}
 
+		/// <summary>
+		/// deletes person from db
+		/// </summary>
+		/// <param name="person">person data</param>
+		/// <returns>status of action</returns>
 		public ActionStatus DeletePerson(Person person)
 		{
 			var originP = DB.Persons.Find(person.Id);

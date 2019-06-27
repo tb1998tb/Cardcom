@@ -8,32 +8,7 @@ namespace BL
 {
 	public static class EnumHelper<T>
 	{
-		public static IList<T> GetValues(Enum value)
-		{
-			var enumValues = new List<T>();
-
-			foreach (FieldInfo fi in value.GetType().GetFields(BindingFlags.Static | BindingFlags.Public))
-			{
-				enumValues.Add((T)Enum.Parse(value.GetType(), fi.Name, false));
-			}
-			return enumValues;
-		}
-
-		public static T Parse(string value)
-		{
-			return (T)Enum.Parse(typeof(T), value, true);
-		}
-
-		public static IList<string> GetNames(Enum value)
-		{
-			return value.GetType().GetFields(BindingFlags.Static | BindingFlags.Public).Select(fi => fi.Name).ToList();
-		}
-
-		public static IList<string> GetDisplayValues(Enum value)
-		{
-			return GetNames(value).Select(obj => GetDisplayValue(Parse(obj))).ToList();
-		}
-
+		
 		private static string lookupResource(Type resourceManagerProvider, string resourceKey)
 		{
 			foreach (PropertyInfo staticProperty in resourceManagerProvider.GetProperties(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public))
@@ -48,6 +23,11 @@ namespace BL
 			return resourceKey; // Fallback with the key name
 		}
 
+		/// <summary>
+		/// get enum value
+		/// </summary>
+		/// <param name="value">enum vaue</param>
+		/// <returns>display name</returns>
 		public static string GetDisplayValue(T value)
 		{
 			var fieldInfo = value.GetType().GetField(value.ToString());

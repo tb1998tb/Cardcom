@@ -14,12 +14,20 @@ namespace Cardcom.Controllers
 {
 	public class BaseController : Controller
 	{
+		/// <summary>
+		/// Called after the action method is invoked
+		/// </summary>
+		/// <param name="filterContext">ActionExecutingContext</param>
 		public override void OnActionExecuting(ActionExecutingContext filterContext)
 		{
 			ValidateModelState(filterContext);
 			base.OnActionExecuting(filterContext);
 		}
 
+		/// <summary>
+		/// validate all the data gotten, if match to its validation attributes
+		/// </summary>
+		/// <param name="filterContext">ActionExecutingContext</param>
 		private void ValidateModelState(ActionExecutingContext filterContext)
 		{
 			if (!ModelState.IsValid)
@@ -41,7 +49,11 @@ namespace Cardcom.Controllers
 		}
 
 		#region Json
-
+		/// <summary>
+		/// parse ActionStatus enum into WebResult
+		/// </summary>
+		/// <param name="status">status of action</param>
+		/// <returns>WebResult</returns>
 		protected ActionResult WebResultOk(ActionStatus status)
 		{
 			return Ok(new WebResult<bool>
@@ -53,7 +65,13 @@ namespace Cardcom.Controllers
 		}
 
 
-
+		/// <summary>
+		/// parsing bad status to WebResult
+		/// </summary>
+		/// <typeparam name="T">generic value</typeparam>
+		/// <param name="message">message for WebResult</param>
+		/// <param name="value">value for WebResult</param>
+		/// <returns></returns>
 		protected ActionResult Fail<T>(string message = "", T value = default(T))
 		{
 			return Ok(new WebResult<T>()
@@ -64,11 +82,5 @@ namespace Cardcom.Controllers
 			});
 		}
 		#endregion
-	}
-
-	internal class ModelStateError
-	{
-		public ModelError Error { get; set; }
-		public ModelStateEntry Field { get; set; }
 	}
 }
