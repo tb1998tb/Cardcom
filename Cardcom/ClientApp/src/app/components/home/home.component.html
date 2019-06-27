@@ -24,7 +24,7 @@
           <td>
             <div class="actions-wrapper">
                 <a [routerLink]="'/person-details/'+person.id" class="btn btn-sm btn-outline-secondary">עריכה</a>
-                <a class="btn btn-sm btn-outline-danger">מחיקה</a>
+                <a (click)="deletePerson(person)" class="btn btn-sm btn-outline-danger">מחיקה</a>
             </div>
           </td>
           <td>{{person.tz}}</td>

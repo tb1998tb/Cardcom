@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cardcom.Controllers
 {
 	[Route("api/[controller]")]
-	public class PersonController : Controller
+	public class PersonController : BaseController
 	{
 		private IPersonService personService;
 		public PersonController(IPersonService personService)
@@ -29,7 +29,12 @@ namespace Cardcom.Controllers
 
 		[Route("[action]")]
 		public ActionResult SetPerson([FromBody]Person person) {
-			return Ok(personService.SetPerson(person));
+			return WebResultOk(personService.SetPerson(person));
+		}
+
+		[Route("[action]")]
+		public ActionResult DeletePerson([FromBody]Person person) {
+			return WebResultOk(personService.DeletePerson(person));
 		}
 	}
 }

@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChildren, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChildren, ViewChild, HostListener, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Person } from '../../models/person';
 import { ApiService } from '../../services/api.service';
 import { DatepickerOptions } from 'ng2-datepicker';
 import * as moment from 'moment';
-import * as enLocale from 'date-fns/locale/en';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -16,6 +15,7 @@ export class PersonDetailsComponent implements OnInit {
   person: Person = new Person();
   birthdate;
   submitted = false;
+  @ViewChild("resetBtn", { static: true }) resetBtn: ElementRef;
   options: DatepickerOptions = {
     minYear: 1900,
     maxYear: 2030,
@@ -42,7 +42,7 @@ export class PersonDetailsComponent implements OnInit {
     if (this.api.persons) {
       this.person = this.api.persons.find(f => f.id.toString() == this.route.snapshot.paramMap.get('id'));
       if (this.person) {
-        //this.birthdate = moment(this.person.birthdate).toDate();
+        this.person.birthdate = moment(this.person.birthdate).toDate();
       }
       else {
         this.person = new Person();
@@ -70,20 +70,28 @@ export class PersonDetailsComponent implements OnInit {
 
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(form: NgForm, force = false) {
     this.submitted = true;
-    if (form.valid) {
+    if (form.valid || force) {
       this.api.showSpinner();
-      this.person.birthdate.setHours(10);
+      if (this.person.birthdate)
+        this.person.birthdate.setHours(10);
       this.api.setPerson(this.person).subscribe(res => {
         this.api.hideSpinner();
-        alert(res.message);
+        this.api.message(res);
         if (res.success) {
           this.api.getPersons();
           this.router.navigate(['']);
         }
       })
     }
+  }
+
+  clearAll() {
+    this.resetBtn.nativeElement.click();
+    this.submitted = false;
+    this.person = new Person();
+    this.router.navigate(['/person-details/0']);
   }
 
 }

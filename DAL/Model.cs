@@ -14,5 +14,18 @@ namespace DAL
 		}
 
 		public DbSet<Person> Persons { get; set; }
+
+		public ActionStatus Save() {
+			try
+			{
+				if (this.SaveChanges() > 0)
+					return ActionStatus.Success;
+				return ActionStatus.NoChange;
+			}
+			catch (Exception)
+			{
+				return ActionStatus.Fail;
+			}
+		}
 	}
 }

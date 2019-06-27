@@ -11,7 +11,8 @@ namespace BL
 	{
 		WebResult<List<Person>> GetAll();
 		WebResult<List<IdName>> GetGenders();
-		WebResult<bool> SetPerson(Person person);
+		ActionStatus SetPerson(Person person);
+		ActionStatus DeletePerson(Person person);
 	}
 
 	public class PersonService : IPersonService
@@ -49,47 +50,38 @@ namespace BL
 			};
 		}
 
-		public WebResult<bool> SetPerson(Person person)
+		public ActionStatus SetPerson(Person person)
 		{
-			var oldP = DB.Persons.Find(person.Id);
-			if (oldP != null)
+			var originP = DB.Persons.Find(person.Id);
+			if (originP != null)
 			{
-				oldP.Mail = person.Mail;
-				oldP.Tz = person.Tz;
-				oldP.Gender = person.Gender;
-				oldP.Birthdate = person.Birthdate;
-				oldP.Name = person.Name;
-				oldP.Telephone = person.Telephone;
-
-
+				originP.Mail = person.Mail;
+				originP.Tz = person.Tz;
+				originP.Gender = person.Gender;
+				originP.Birthdate = person.Birthdate;
+				originP.Name = person.Name;
+				originP.Telephone = person.Telephone;
 			}
 			else
 			{
 				person.Id = 0;
 				DB.Persons.Add(person);
 			}
-			try
-			{
-				if (DB.SaveChanges() > 0)
-					return new WebResult<bool>
-					{
-						Success = true,
-						Message = "המידע נשמר בהצלחה",
-						Value = true
-					};
-
-			}
-			catch (Exception)
-			{
-			}
-			return new WebResult<bool>
-			{
-				Success = false,
-				Message = "תקלה בשמירת המידע, ייתכן שלא התבצעו שינויים",
-				Value = false
-			};
+			return DB.Save();
+			
 		}
 
+		public ActionStatus DeletePerson(Person person)
+		{
+			var originP = DB.Persons.Find(person.Id);
+			if (originP != null)
+			{
+				DB.Persons.Remove(originP);
+				return DB.Save();
+				
+			}
+			return ActionStatus.MissingData;
+		}
 
 	}
 

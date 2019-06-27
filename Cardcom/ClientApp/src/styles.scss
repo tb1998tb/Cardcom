@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
-
+@import "~ngx-toastr/toastr.css";
+@import '~ngx-toastr/toastr';
 //personal
-
-.title{
-  margin-bottom:20px;
+.title {
+  margin-bottom: 20px;
 }
 
 .table, h3 {
@@ -88,6 +88,18 @@
 
 .topbar-container{
   direction:ltr;
+}
+
+//sweetalert
+
+.swal2-container{
+  direction:rtl !important;
+}
+
+//ngx-toaster
+
+.toast-container {
+  text-align: right !important;
 }
 
 //

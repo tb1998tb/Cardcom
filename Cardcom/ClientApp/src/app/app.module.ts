@@ -11,6 +11,8 @@ import { PersonDetailsComponent } from './components/person-details/person-detai
 import { AppRoutingModule } from './app-routing.module';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { ErrorAlertComponent } from './components/error-alert/error-alert.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,30 @@ import { ErrorAlertComponent } from './components/error-alert/error-alert.compon
     SpinnerComponent,
     HomeComponent,
     PersonDetailsComponent,
-    ErrorAlertComponent
+    ErrorAlertComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    NgDatepickerModule
+    NgDatepickerModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        positionClass: 'toast-top-center',
+        tapToDismiss: true,
+        progressBar: true,
+        progressAnimation: 'increasing',
+        maxOpened: 3,
+        autoDismiss: true,
+        preventDuplicates: true,
+        resetTimeoutOnDuplicate: true,
+        newestOnTop: false,
+        timeOut: 5000,
+        extendedTimeOut: 1500,
+        enableHtml: true
+      }),
   ],
   providers: [ApiService],
   bootstrap: [AppComponent],

@@ -6,4 +6,8 @@ export class Person {
   birthdate?: Date;
   gender: number;
   telephone: string;
+
+  constructor() {
+    this.birthdate = null;
+  }
 }
