@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PersonDetailsComponent } from './components/person-details/person-details.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NgDatepickerModule } from 'ng2-datepicker';
+import { ErrorAlertComponent } from './components/error-alert/error-alert.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NgDatepickerModule } from 'ng2-datepicker';
     GenderPipe,
     SpinnerComponent,
     HomeComponent,
-    PersonDetailsComponent
+    PersonDetailsComponent,
+    ErrorAlertComponent
   ],
   imports: [
     BrowserModule,

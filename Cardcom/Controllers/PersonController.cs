@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BL;
+using DAL.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cardcom.Controllers
@@ -24,6 +25,11 @@ namespace Cardcom.Controllers
 		[Route("[action]")]
 		public ActionResult GetGenders() {
 			return Ok(personService.GetGenders());
+		}
+
+		[Route("[action]")]
+		public ActionResult SetPerson([FromBody]Person person) {
+			return Ok(personService.SetPerson(person));
 		}
 	}
 }

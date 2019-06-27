@@ -1,27 +1,65 @@
-<form *ngIf="person">
+<div class="row title">
+  <h3 class="col-xs-6 col-sm-6">פרטים</h3>
+  <div class="col-xs-6 col-sm-6">
+    <a *ngIf="person?.id" [routerLink]="'/person-details/0'" class="btn btn-top btn-outline-info">חדש</a>
+    <a [routerLink]="'/'" class="btn btn-top btn-outline-info">חזרה לרשימה</a>
+  </div>
+</div>
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
   <div class="form-group row">
     <label class="col-sm-3">תעודת זהות</label>
     <div class="col-sm-9">
-      <input type="text" name="tz" class="form-control" [(ngModel)]="person.tz">
+      <input type="text"
+             autocomplete="off"
+             name="tz"
+             class="form-control"
+             [class.no-valid]="tz.control.errors?.length>0"
+             [(ngModel)]="person.tz"
+             #tz="ngModel"
+             required
+             pattern="\d*">
+      <app-error-alert *ngIf="tz.control.dirty||submitted" [errors]="tz.control.errors"></app-error-alert>
     </div>
   </div>
   <div class="form-group row">
     <label class="col-sm-3">שם</label>
     <div class="col-sm-9">
-
-      <input type="text" name="name" class="form-control" [(ngModel)]="person.name">
+      <input type="text"
+             autocomplete="off"
+             name="name"
+             class="form-control"
+             [class.no-valid]="name.control.errors?.length>0"
+             [(ngModel)]="person.name"
+             #name="ngModel"
+             required>
+      <app-error-alert *ngIf="name.control.dirty||submitted" [errors]="name.control.errors"></app-error-alert>
     </div>
   </div>
   <div class="form-group row">
     <label class="col-sm-3">מייל</label>
     <div class="col-sm-9">
-      <input type="email" id="exampleFormControlInput1" name="mail" class="form-control" [(ngModel)]="person.mail">
+      <input type="email"
+             autocomplete="off"
+             name="mail"
+             class="form-control"
+             (focus)="focused=true"
+             (focusout)="focused=false"
+             [(ngModel)]="person.mail"
+             #mail="ngModel"
+             #mailInp
+             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+      <app-error-alert *ngIf="(mail.control.dirty&&!focused)||submitted" [errors]="mail.control.errors"></app-error-alert>
     </div>
   </div>
   <div class="form-group row">
     <label class="col-sm-3">תאריך לידה</label>
     <div class="col-sm-9">
-      <ng-datepicker name="birthdate" [options]="options" [(ngModel)]="birthdate"></ng-datepicker>
+      <ng-datepicker name="birthdate"
+                     [options]="options"
+                     [(ngModel)]="person.birthdate"
+                     #birth="ngModel"
+                     required></ng-datepicker>
+      <app-error-alert *ngIf="birth.control.dirty||submitted" [errors]="birth.control.errors"></app-error-alert>
     </div>
   </div>
   <div class="form-group row">
@@ -35,7 +73,21 @@
   <div class="form-group row">
     <label class="col-sm-3">טלפון</label>
     <div class="col-sm-9">
-      <input type="tel" name="telephone" class="form-control" [(ngModel)]="person.telephone">
+      <input type="text"
+             autocomplete="off"
+             name="telephone"
+             class="form-control"
+             [(ngModel)]="person.telephone"
+             #telephone="ngModel"
+             pattern="\d*">
+      <app-error-alert *ngIf="telephone.control.dirty||submitted" [errors]="telephone.control.errors"></app-error-alert>
+
     </div>
   </div>
+  <div class="form-group footer">
+    <button type="submit" class="btn btn-top btn-outline-info">אישור</button>
+    <button type="reset" class="btn btn-top btn-outline-info">נקה</button>
+  </div>
+
 </form>
+
